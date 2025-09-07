@@ -1,0 +1,64 @@
+<div class="container">
+    <div class="container-content">
+        <form [formGroup]="pokemonForm" (ngSubmit)="savePokemon()" class="form-container">
+            <label>ID</label>
+            <input type="number" formControlName="id" />
+
+            <label>Nombre</label>
+            <input type="text" formControlName="name" />
+
+            <label>Peso</label>
+            <input type="text" formControlName="weight" />
+
+            <label>Color</label>
+            <input type="color" formControlName="color" />
+
+            <div>
+                <label>Tipos</label>
+                <div formArrayName="types">
+                    <div class="form-array">
+                        @for (t of types.controls; track t; let i = $index) {
+                        <input [formControlName]="i" />
+                        }
+                    </div>
+
+                    <button type="button" (click)="addType()">+ Añadir Tipo</button>
+                </div>
+            </div>
+
+            <div>
+                <label>Sprites</label>
+                <div formArrayName="sprites">
+                    <div class="form-array">
+                        @for (s of sprites.controls; track s; let i = $index) {
+
+                        <input [formControlName]="i" placeholder="URL del sprite" />
+                        }
+                    </div>
+
+                    <button type="button" (click)="addSprite()">+ Añadir Sprite</button>
+                </div>
+            </div>
+
+            <div>
+                <label>Movimientos</label>
+                <div formArrayName="moves">
+                    <div class="form-array">
+                        @for (m of moves.controls; track m; let i = $index) {
+                        <input [formControlName]="i" placeholder="Nombre del movimiento" />
+                        }
+                    </div>
+
+                    <button type="button" (click)="addMove()">+ Añadir Movimiento</button>
+                </div>
+            </div>
+
+            <button type="submit" [disabled]="pokemonForm.invalid">
+                Guardar Pokémon
+            </button>
+            <button type="submit" class="button-back" (click)="back()">
+                Regresar
+            </button>
+        </form>
+    </div>
+</div>

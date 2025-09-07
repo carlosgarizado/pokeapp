@@ -1,0 +1,37 @@
+<div class="container">
+    <div class="container-content">
+        @if(pokemon){
+        <div class="detail-pokemon" [style.background-color]="pokemon.color">
+            <div class="image-box">
+                <img [src]="pokemon.sprites[0]" alt="{{ pokemon.name }}" />
+            </div>
+
+            <div class="info">
+                <h3>#{{ pokemon.id }}</h3>
+                <h3>{{ pokemon.name }}</h3>
+                <p><strong>Types</strong><br />{{ pokemon.types.join(" / ") }}</p>
+                <p><strong>Peso</strong><br />{{ pokemon.weight }}</p>
+            </div>
+
+            <div class="sprites">
+                <h4>Sprites</h4>
+                <div class="sprite-list">
+                    @for (sprite of pokemon.sprites; track pokemon; let i = $index) {
+                    <img [src]="sprite" alt="sprite" />
+                    }
+                </div>
+            </div>
+
+            <div class="moves">
+                <h4>Movimientos</h4>
+                <p>{{ pokemon.moves.join(", ") }}</p>
+            </div>
+            <div class="container-button" (click)="back()">
+                <button>volver</button>
+            </div>
+        </div>
+        }@else {
+        <h3>No se pudo obtener ningun registro</h3>
+        }
+    </div>
+</div>

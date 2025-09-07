@@ -1,0 +1,9 @@
+<div class="pokemon-card"  [style.background-color]="color" (click)="select()">
+    <div class="image-container">
+      <img [src]="img" alt="Bulbasaur">
+    </div>
+    <div class="pokemon-info">
+      <span class="pokemon-number">#{{index}}</span>
+      <span class="pokemon-name">{{name}}</span>
+    </div>
+  </div>  

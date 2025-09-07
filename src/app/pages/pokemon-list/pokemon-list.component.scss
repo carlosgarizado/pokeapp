@@ -1,0 +1,96 @@
+@mixin column() {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin row() {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container {
+    @include column;
+    height: 95vh;
+    width: 100%;
+
+
+    .container-content {
+        @include column;
+        width: 100%;
+        max-width: 600px;
+        max-height: 1000px;
+        background-color: #f3f4f5;
+        padding: 20px;
+
+        .container-header {
+            @include row;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 436px;
+
+            button {
+                margin-top: 10px;
+                padding: 8px;
+                border: none;
+                border-radius: 6px;
+                background-color: #4caf50;
+                color: #fff;
+                cursor: pointer;
+            }
+        }
+
+        .container-list {
+            @include column;
+            gap: 20px;
+            width: 100%;
+            height: 100%;
+            min-height: 200px;
+
+            .container-cards {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
+            }
+
+            .pagination {
+                @include row();
+                justify-content: space-between;
+                width: 100%;
+                max-width: 432px;
+
+                button {
+                    width: 100px;
+                    height: 30px;
+                    color: #fff;
+                    background-color: #1976d2;
+                    border: none;
+                }
+
+                button:disabled {
+                    background-color: #9e9e9e;
+                    cursor: not-allowed;
+                }
+
+            }
+
+            @media (max-width: 646px) {
+                justify-content: normal;
+            }
+        }
+
+        @media (max-width: 646px) {
+            max-height: 100%;
+            max-width: 100%;
+            min-height: 100%;
+        }
+    }
+
+    @media (max-width: 646px) {
+        justify-content: normal;
+        background-color: #f3f4f5;
+    }
+
+}

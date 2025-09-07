@@ -1,0 +1,134 @@
+@mixin column() {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+@mixin row() {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.container {
+    @include column;
+    height: 95vh;
+    width: 100%;
+
+    .container-content {
+        @include column;
+        width: 100%;
+        max-width: 600px;
+        height: auto;
+        background-color: #fff;
+        padding: 20px;
+
+        .detail-pokemon {
+            @include column;
+            width: 100%;
+            max-width: 600px;
+            max-height: 1000px;
+            background-color: #d3b6f8;
+            padding: 20px;
+            min-height: 500px;
+            border-radius: 12px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+            align-items: center;
+            text-align: center;
+
+            .image-box {
+                width: 100%;
+                max-width: 300px;
+                height: 180px;
+                background-color: #ececec;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 8px;
+                margin-bottom: 20px;
+                
+
+                img {
+                    max-width: 100%;
+                    max-height: 100%;
+                    animation: float 2s ease-in-out infinite;
+                }
+            }
+
+            h3 {
+                margin: 10px 0;
+                font-size: 1.2rem;
+                font-weight: bold;
+            }
+
+            .info {
+                width: 100%;
+                @include column;
+                gap: 10px;
+
+                h3,
+                p {
+                    margin: 0px;
+                }
+            }
+
+            .sprites {
+                margin: 20px 0;
+
+                h4 {
+                    margin: 0px 0px 10px 0px;
+                }
+
+                .sprite-list {
+                    display: flex;
+                    gap: 10px;
+                    justify-content: center;
+                    flex-wrap: wrap;
+
+                    img {
+                        width: 50px;
+                        height: 50px;
+                        background-color: #ececec;
+                        border-radius: 50%;
+                        padding: 5px;
+                    }
+                }
+            }
+
+            .moves {
+                h4 {
+                    margin-bottom: 8px;
+                }
+
+                p {
+                    font-size: 0.9rem;
+                }
+            }
+
+            .container-button{
+                button{
+                    width: 70px;
+                    font-size: 15px;
+                    border: none;
+                    height: 30px;
+                    color: #000;
+                }
+            }
+        }
+    }
+}
